@@ -1,10 +1,12 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
 
     <title>Sticky Footer Navbar Template · Bootstrap v5.3</title>
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" crossorigin="anonymous">
 
 
     <style>
@@ -62,7 +64,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/my.css" rel="stylesheet">
+    <link href="{% static "css/my.css" %}" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
 
@@ -70,7 +72,7 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Askme Kuznetsov</a>
+            <a class="navbar-brand" href="{% url "index" %}">Askme Kuznetsov</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -78,22 +80,32 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="ask.html">ASK!</a>
+                        <a class="nav-link" href="{% url "ask" %}">ASK!</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Log in</a>
+                        <a class="nav-link" href="{% url "login" %}">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.html">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
+                        <a class="nav-link" href="{% url "register" %}">Register</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "settings" %}">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img src="{% static "img/Raindrop.png" %}">
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -102,59 +114,48 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="mt-5">Log in</h1>
         <div class="row">
             <div class="col-9">
-                <div class="col-6">
-                    <div class="error-message">
-                        <p>Error!</p>
-                    </div>
-                    <!-- Email input -->
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInput1">Email or login</label>
-                            <input type="text" class="form-control" id="exampleInput1"
-                                   placeholder="Enter email or login">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Log in!</button>
-                    </form>
-
-                </div>
+                {% block content %}
+                {% endblock content %}
             </div>
 
 
             <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Popular Tags</h4>
-                        <a href="#">black_jack</a>
-                        <a href="#">python</a>
-                        <a href="#">MySQL</a>
-                        <a href="#">Django</a>
-                        <a href="#">Firefox</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Best Members</h4>
-                        <div class="user-link">
-                            <a href="#">Mr. Freeman</a>
-                        </div>
-                        <div class="user-link">
-                            <a href="#">Dr. House</a>
-                        </div>
-                        <div class="user-link">
-                            <a href="#">Queen Victoria</a>
+                {% block rightpanel %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Popular Tags</h4>
+                            <a href="{% url "tag" %}">black_jack</a>
+                            <a href="#">python</a>
+                            <a href="#">MySQL</a>
+                            <a href="#">Django</a>
+                            <a href="#">Firefox</a>
                         </div>
                     </div>
-                </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Best Members</h4>
+                            <div class="user-link">
+                                <a href="#">Mr. Freeman</a>
+                            </div>
+                            <div class="user-link">
+                                <a href="#">Dr. House</a>
+                            </div>
+                            <div class="user-link">
+                                <a href="#">Queen Victoria</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock rightpanel %}
             </div>
-            <label><a href="register.html">Register new account</a></label>
+
+            <div>
+                <nav aria-label="Page navigation">
+                    {% block paginator %}
+                    {% endblock paginator %}
+                </nav>
+            </div>
         </div>
 </main>
 

@@ -1,0 +1,32 @@
+{% load static %}
+<div class="question-answer">
+    <div class="row">
+        <div class="col-3">
+            <div class="question-avatar">
+                <img src="{% static "img/img_avatar1.png" %}" alt="avatar">
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary">↑</button>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text" id="btnGroupAddon">3</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary">↓</button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="question-text">{{ answer.text }}
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>
+                        <input type="checkbox">
+                        Correct!
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

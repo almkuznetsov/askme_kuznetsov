@@ -57,15 +57,14 @@ main > .container {
 	--bs-card-border-width: 0;
 }
 
-.btn-group {
-  margin-left: 9px;
-  padding: 10px;
+.btn {
+  margin-left: 10px;
 }
 
 .form-group {
   padding: 10px;
 }
 
-.error-message{
+.error-message {
   color: red;
 }

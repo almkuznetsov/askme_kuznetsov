@@ -1,0 +1,50 @@
+{% extends "inc/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1 class="mt-5">Register</h1>
+    <div class="col-6">
+        <div class="error-message">
+            <p>Error!</p>
+        </div>
+        <!-- Email input -->
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Login</label>
+                <input type="text" class="form-control" id="exampleInputLogin1" placeholder="Enter login">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1"
+                       aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">NickName</label>
+                <input type="text" class="form-control" id="exampleInputNickName1"
+                       placeholder="Enter nickname">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1"
+                       placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Repeat password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2"
+                       placeholder="Password again">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Upload avatar</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+
+    </div>
+
+
+{% endblock content %}
+{% block rightpanel %}
+{% endblock rightpanel %}
