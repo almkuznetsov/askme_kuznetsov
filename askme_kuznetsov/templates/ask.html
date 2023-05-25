@@ -1,24 +1,14 @@
 {% extends "inc/base.html" %}
-
+{% load bootstrap5 %}
 {% block content %}
 
-                <h1 class="mt-5">New question</h1>
-                <div class="question-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Title</label>
-                            <input class="form-control" type="text" placeholder="My awesome question">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Text</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Tags</label>
-                            <input class="form-control" type="text" placeholder="blackjack, python">
-                        </div>
-                        <button type="submit" class="btn btn-primary">ASK</button>
-                    </form>
-                </div>
+        <h1 class="mt-5">New question</h1>
+            <div class="question-form">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                    <button type="submit" class="btn btn-primary">ASK</button>
+                </form>
+            </div>
 
 {% endblock content %}
